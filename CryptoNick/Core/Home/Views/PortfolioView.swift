@@ -37,6 +37,11 @@ struct PortfolioView: View {
                     trailingNavBarButtons
                 }
             }
+            .onChange(of: viewModel.searchText) { newValue in
+                if newValue == "" {
+                    removeSelectedCoin()
+                }
+            }
         }
     }
 }
@@ -52,13 +57,13 @@ extension PortfolioView {
     private var coinLogoList: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
-                ForEach(viewModel.allCoins) { coin in
+                ForEach(viewModel.searchText.isEmpty ? viewModel.portfolioCoins : viewModel.allCoins) { coin in
                     CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .padding(4)
                         .onTapGesture {
                             withAnimation(.easeIn) {
-                                selectedCoin = coin
+                                updateSelected(coin: coin)
                             }
                         }
                         .background(
@@ -70,6 +75,18 @@ extension PortfolioView {
             .frame(height: 120)
             .padding(.leading)
         }
+    }
+    
+    private func updateSelected(coin: Coin) {
+        selectedCoin = coin
+        
+        if let portfolioCoin = viewModel.portfolioCoins.first(where: { $0.id == coin.id }),
+           let amount = portfolioCoin.currentHoldings {
+            quantityText = "\(amount)"
+        } else {
+            quantityText = ""
+        }
+        
     }
     
     private func getCurrentValue() -> Double {
@@ -123,9 +140,11 @@ extension PortfolioView {
     }
     
     private func saveButtonPressed() {
-        guard let selectedCoin else { return }
+        guard let selectedCoin,
+              let quantity = Double(quantityText) else { return }
         
-        // save to portfolio
+        
+        viewModel.updatePortfolio(coin: selectedCoin, amount: quantity)
         
         withAnimation(.easeIn) {
             showCheckmark = true
@@ -144,5 +163,6 @@ extension PortfolioView {
     private func removeSelectedCoin() {
         selectedCoin = nil
         viewModel.searchText = ""
+        quantityText = ""
     }
 }
