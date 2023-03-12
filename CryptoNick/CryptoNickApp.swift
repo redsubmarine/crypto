@@ -11,6 +11,7 @@ import SwiftUI
 struct CryptoNickApp: App {
     
     @StateObject private var viewModel = HomeViewModel()
+    @State private var showLaunchView = true
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
@@ -23,11 +24,21 @@ struct CryptoNickApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                HomeView()
-                    .navigationBarHidden(true)
+            ZStack {
+                NavigationView {
+                    HomeView()
+                        .navigationBarHidden(true)
+                }
+                .environmentObject(viewModel)
+                
+                ZStack {
+                    if showLaunchView {
+                        LaunchView(showLaunchView: $showLaunchView)
+                            .transition(.opacity)
+                    }
+                }
+                .zIndex(2)
             }
-            .environmentObject(viewModel)
         }
     }
 }
