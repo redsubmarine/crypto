@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9D7AD7B929BB17380070A948 /* CryptoNickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AD7B829BB17380070A948 /* CryptoNickApp.swift */; };
-		9D7AD7BB29BB17380070A948 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AD7BA29BB17380070A948 /* ContentView.swift */; };
 		9D7AD7BD29BB17390070A948 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AD7BC29BB17390070A948 /* Assets.xcassets */; };
 		9D7AD7C029BB17390070A948 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AD7BF29BB17390070A948 /* Preview Assets.xcassets */; };
 		9D7AD7C829BB1B830070A948 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AD7C729BB1B830070A948 /* Color.swift */; };
@@ -54,7 +53,6 @@
 /* Begin PBXFileReference section */
 		9D7AD7B529BB17380070A948 /* CryptoNick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoNick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7AD7B829BB17380070A948 /* CryptoNickApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNickApp.swift; sourceTree = "<group>"; };
-		9D7AD7BA29BB17380070A948 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9D7AD7BC29BB17390070A948 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D7AD7BF29BB17390070A948 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9D7AD7C729BB1B830070A948 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 				9D8F325A29BB542700E27DE9 /* Services */,
 				9D8F324F29BB295500E27DE9 /* Models */,
 				9D8F324329BB1D6700E27DE9 /* Core */,
-				9D7AD7BA29BB17380070A948 /* ContentView.swift */,
 				9D7AD7BC29BB17390070A948 /* Assets.xcassets */,
 				9D7AD7BE29BB17390070A948 /* Preview Content */,
 			);
@@ -402,7 +399,6 @@
 				9D8F325329BB381700E27DE9 /* CoinRowView.swift in Sources */,
 				9D8F327A29BC56D600E27DE9 /* XMarkButton.swift in Sources */,
 				9D8F325929BB4EF800E27DE9 /* HomeViewModel.swift in Sources */,
-				9D7AD7BB29BB17380070A948 /* ContentView.swift in Sources */,
 				9D8F326829BB6C6A00E27DE9 /* LocalFileManager.swift in Sources */,
 				9D8F327429BC4ACA00E27DE9 /* MarketDataModel.swift in Sources */,
 				9D8F324829BB1D8D00E27DE9 /* HomeView.swift in Sources */,

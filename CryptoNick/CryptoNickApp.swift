@@ -29,6 +29,7 @@ struct CryptoNickApp: App {
                     HomeView()
                         .navigationBarHidden(true)
                 }
+                .navigationViewStyle(.stack)
                 .environmentObject(viewModel)
                 
                 ZStack {

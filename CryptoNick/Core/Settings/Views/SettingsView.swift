@@ -69,6 +69,7 @@ extension SettingsView {
             VStack(alignment: .leading) {
                 Image("coingecko")
                     .resizable()
+                    .scaledToFit()
                     .frame(height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                 Text("The cryptocurrency data that is used in this app from a free API from CoinGecko! Prices may be slightly delayed.")
