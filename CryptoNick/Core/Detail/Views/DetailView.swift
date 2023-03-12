@@ -21,6 +21,7 @@ struct DetailLoadingView: View {
 
 struct DetailView: View {
     @StateObject private var viewModel: DetailViewModel
+    @State private var showFullDescription = false
     private let columns: [GridItem] = [
         .init(.flexible()),
         .init(.flexible()),
@@ -42,12 +43,16 @@ struct DetailView: View {
                     overviewTitle
                     Divider()
                     
+                    descriptionSection
+                    
                     overviewGrid
                     
                     additionalTitle
                     Divider()
                     
                     additionalGrid
+                    
+                    websiteSection
                 }
                 .padding()
             }
@@ -97,6 +102,32 @@ extension DetailView {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
+    private var descriptionSection: some View {
+        ZStack {
+            if let description = viewModel.coinDescription, !description.isEmpty {
+                VStack(alignment: .leading) {
+                    Text(description)
+                        .lineLimit(showFullDescription ? nil : 3)
+                        .font(.callout)
+                        .foregroundColor(.theme.secondaryText)
+                    
+                    Button(action: {
+                        withAnimation(.easeInOut) {
+                            showFullDescription.toggle()
+                        }
+                    }, label: {
+                        Text(showFullDescription ? "Less" : "Read more..")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .padding(.vertical, 4)
+                    })
+                    .tint(.blue)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+    
     private var overviewGrid: some View {
         LazyVGrid(
             columns: columns,
@@ -119,5 +150,21 @@ extension DetailView {
                     StatisticView(statistic: stat)
                 }
             }
+    }
+    
+    private var websiteSection: some View {
+        VStack(alignment: .leading) {
+            if let website = viewModel.websiteURL,
+            let url = URL(string: website) {
+                Link("Website", destination: url)
+            }
+            if let reddit = viewModel.redditURL,
+            let url = URL(string: reddit) {
+                Link("Reddit", destination: url)
+            }
+        }
+        .tint(.blue)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .font(.headline)
     }
 }
