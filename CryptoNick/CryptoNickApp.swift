@@ -20,6 +20,8 @@ struct CryptoNickApp: App {
         UINavigationBar.appearance().titleTextAttributes = [
             .foregroundColor: UIColor(Color.theme.accent)
         ]
+        UITableView.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().tintColor = UIColor(.theme.accent)
     }
     
     var body: some Scene {
